@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  ICTمهرجان عيد الفطر 2026 قسم  🌙🎆🌸</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --joy-pink: #FF0080;
+            --joy-orange: #FF8C00;
+            --joy-purple: #7928CA;
+            --joy-yellow: #FFEA00;
+            --white: #FFFFFF;
+        }
+
+        @keyframes animateBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(-45deg, #FF0080, #FF8C00, #7928CA, #4facfe);
+            background-size: 400% 400%;
+            animation: animateBG 12s ease infinite;
+            color: var(--white);
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; overflow: hidden;
+            text-align: center; position: relative;
+            perspective: 1000px;
+        }
+
+        .garland-container {
+            position: absolute; top: -10px; left: 0; width: 100%; height: 200px;
+            z-index: 50; pointer-events: none; display: none;
+        }
+
+        .garland-svg { width: 100%; height: 100%; }
+
+        @keyframes swing {
+            0% { transform: rotate(-2deg); transform-origin: top center; }
+            50% { transform: rotate(2deg); transform-origin: top center; }
+            100% { transform: rotate(-2deg); transform-origin: top center; }
+        }
+        .garland-item { animation: swing 3s ease-in-out infinite; }
+
+        #fireworks-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 999;
+        }
+
+        .mouse-sparkle {
+            position: absolute; width: 8px; height: 8px; background: var(--joy-yellow);
+            border-radius: 50%; pointer-events: none; z-index: 1000;
+            filter: blur(1px); box-shadow: 0 0 10px var(--joy-yellow);
+            animation: sparkleFade 0.7s forwards;
+        }
+        @keyframes sparkleFade { to { opacity: 0; transform: scale(2) translateY(20px); } }
+
+        .container {
+            padding: 3rem; background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 3px solid rgba(255, 255, 255, 0.4); border-radius: 50px;
+            max-width: 750px; width: 85%; z-index: 100;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+            display: flex; justify-content: center; align-items: center;
+            flex-direction: row-reverse; transition: transform 0.1s ease-out;
+            transform-style: preserve-3d;
+        }
+
+        .flower-svg { width: 110px; height: 110px; margin: 0 15px; display: none; }
+        .flower-path { fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; stroke: var(--white); }
+
+        @keyframes drawFlower { to { stroke-dashoffset: 0; } }
+        @keyframes colorFlower { 0% { stroke: var(--white); } 50% { stroke: var(--joy-yellow); } 100% { stroke: var(--joy-pink); } }
+
+        .text-wrapper { flex: 1; }
+        h1 { font-size: 3.2rem; font-weight: 900; margin: 0; display: none; text-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        p { font-size: 1.6rem; font-weight: 700; margin-top: 15px; display: none; }
+
+        #start-button {
+            padding: 20px 50px; font-family: 'Cairo', sans-serif; font-size: 1.8rem; font-weight: 900;
+            color: var(--joy-pink); background-color: var(--white); border: none;
+            border-radius: 100px; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: 0.3s; z-index: 1001;
+        }
+        #start-button:hover { transform: scale(1.1); background-color: var(--joy-yellow); color: #000; }
+
+        .particle { position: absolute; width: 6px; height: 6px; border-radius: 50%; pointer-events: none; }
+
+        @media (max-width: 600px) {
+            .container { flex-direction: column; padding: 2rem; }
+            h1 { font-size: 2.2rem; }
+            .flower-svg { width: 80px; height: 80px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="garland-container" id="garlands">
+        <svg class="garland-svg" viewBox="0 0 1000 200" preserveAspectRatio="none">
+            <path d="M0,50 Q250,150 500,50 T1000,50" fill="none" stroke="white" stroke-width="2" opacity="0.5"/>
+            <polygon class="garland-item" points="100,75 130,120 70,120" fill="#FF0080" />
+            <polygon class="garland-item" points="250,105 280,150 220,150" fill="#FFEA00" />
+            <polygon class="garland-item" points="400,95 430,140 370,140" fill="#7928CA" />
+            <polygon class="garland-item" points="550,85 580,130 520,130" fill="#FF8C00" />
+            <polygon class="garland-item" points="700,95 730,140 670,140" fill="#00E5FF" />
+            <polygon class="garland-item" points="850,80 880,125 820,125" fill="#FFEA00" />
+        </svg>
+    </div>
+
+    <div id="fireworks-overlay"></div>
+
+    <button id="start-button" onclick="startExperience()">اضغط هنا لبدء السحر! ✨🎆</button>
+
+    <div class="container" id="eid-card" style="display: none;">
+        <svg class="flower-svg" id="flower-right" viewBox="0 0 100 100">
+            <path class="flower-path" d="M50,10 Q60,35 50,60 Q40,35 50,10 M50,60 Q75,70 100,60 Q75,50 50,60 M50,60 Q25,70 0,60 Q25,50 50,60 M50,60 Q60,85 50,110 Q40,85 50,60" />
+            <circle cx="50" cy="60" r="6" fill="var(--joy-yellow)" opacity="0" id="center-right" />
+        </svg>
+
+        <div class="text-wrapper">
+            <h1 id="eid-title"></h1>
+            <p id="eid-text"></p>
+            <button onclick="launchMoreFireworks()" style="margin-top:20px; padding:10px 20px; cursor:pointer; border-radius:15px; border:none; background:var(--joy-yellow); font-weight:bold; color:#333; font-family:'Cairo',sans-serif;">أطلق انفجاراً لونياً! 🚀💥</button>
+        </div>
+
+        <svg class="flower-svg" id="flower-left" viewBox="0 0 100 100">
+            <path class="flower-path" d="M50,10 Q60,35 50,60 Q40,35 50,10 M50,60 Q75,70 100,60 Q75,50 50,60 M50,60 Q25,70 0,60 Q25,50 50,60 M50,60 Q60,85 50,110 Q40,85 50,60" />
+            <circle cx="50" cy="60" r="6" fill="var(--joy-yellow)" opacity="0" id="center-left" />
+        </svg>
+    </div>
+
+    <script>
+        // --- نظام الصوت الرقمي (Firework Sound) ---
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playFireworkSound() {
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            oscillator.type = 'triangle';
+            oscillator.frequency.setValueAtTime(150, audioCtx.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+            gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 0.5);
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'mouse-sparkle';
+            sparkle.style.left = e.pageX + 'px';
+            sparkle.style.top = e.pageY + 'px';
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 700);
+
+            const card = document.getElementById('eid-card');
+            if (card && card.style.display !== 'none') {
+                const x = (window.innerWidth / 2 - e.pageX) / 25;
+                const y = (window.innerHeight / 2 - e.pageY) / 25;
+                card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+            }
+        });
+
+        function startExperience() {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            document.getElementById('start-button').style.display = 'none';
+            document.getElementById('eid-card').style.display = 'flex';
+            document.getElementById('garlands').style.display = 'block';
+            
+            launchGrandFinale();
+            animateFlower(document.getElementById('flower-left'), document.getElementById('center-left'));
+            animateFlower(document.getElementById('flower-right'), document.getElementById('center-right'));
+
+            typeWriter("✨ عيد فطر سعيد 🌙🎈", "eid-title", 100, () => {
+                typeWriter("كل عام وأنتم بخير وصحة وسلامة... عساكم من عواده! 🎉🍬", "eid-text", 60);
+            });
+        }
+
+        function animateFlower(flower, center) {
+            flower.style.display = 'block';
+            const path = flower.querySelector('.flower-path');
+            const len = path.getTotalLength();
+            path.style.strokeDasharray = len;
+            path.style.strokeDashoffset = len;
+            path.style.animation = 'drawFlower 3s forwards, colorFlower 4s forwards';
+            setTimeout(() => { center.style.opacity = 1; center.style.transition = 'opacity 1s'; }, 2500);
+        }
+
+        function typeWriter(text, id, speed, cb) {
+            const el = document.getElementById(id);
+            el.style.display = 'block';
+            let i = 0;
+            function run() {
+                if (i < text.length) {
+                    el.innerHTML += text.charAt(i); i++;
+                    setTimeout(run, speed);
+                } else if (cb) cb();
+            }
+            run();
+        }
+
+        function launchFirework() {
+            playFireworkSound(); // تشغيل الصوت مع كل انفجار
+            const container = document.getElementById('fireworks-overlay');
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * (window.innerHeight * 0.5); 
+            const color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+
+            for (let i = 0; i < 40; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.backgroundColor = color;
+                p.style.left = x + 'px'; p.style.top = y + 'px';
+                p.style.boxShadow = `0 0 15px ${color}, 0 0 5px #fff`;
+                container.appendChild(p);
+
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = Math.random() * 220 + 80;
+                const destX = Math.cos(angle) * velocity;
+                const destY = Math.sin(angle) * velocity;
+
+                p.animate([
+                    { transform: 'translate(0, 0) scale(1.5)', opacity: 1 },
+                    { transform: `translate(${destX}px, ${destY}px) scale(0)`, opacity: 0 }
+                ], {
+                    duration: 1200 + Math.random() * 1000,
+                    easing: 'cubic-bezier(0, .9, .57, 1)'
+                }).onfinish = () => p.remove();
+            }
+        }
+
+        function launchGrandFinale() {
+            for (let i = 0; i < 15; i++) {
+                setTimeout(launchFirework, i * 250);
+            }
+        }
+
+        function launchMoreFireworks() {
+            for(let i=0; i<5; i++) {
+                setTimeout(launchFirework, i * 150);
+            }
+            const card = document.getElementById('eid-card');
+            card.animate([
+                { transform: 'translate(1px, 1px) rotate(0deg)' },
+                { transform: 'translate(-1px, -2px) rotate(-1deg)' },
+                { transform: 'translate(0px, 0px) rotate(0deg)' }
+            ], { duration: 500 });
+        }
+    </script>
+</body>
+</html>
