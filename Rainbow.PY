@@ -9,15 +9,15 @@ except ImportError:
     print('https://pypi.org/project/Bext/')
     sys.exit()
 
-print('Rainbow, by Al Sweigart al@inventwithpython.com')
+print('Rainbow')
 print('Press Ctrl-C to stop.')
 time.sleep(3)
 
-indent = 0  # How many spaces to indent.
-indentIncreasing = True  # Whether the indentation is increasing or not.
+indent = 0
+indentIncreasing = True
 
 try:
-    while True:  # Main program loop.
+    while True:
         print(' ' * indent, end='')
         bext.fg('red')
         print('##', end='')
